@@ -1,0 +1,25 @@
+name: Automating Image Pipelines with Packer
+
+on:
+  push:
+    branches:
+      - master 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Packer
+      run: |
+        wget https://releases.hashicorp.com/packer/1.7.4/packer_1.7.4_linux_amd64.zip
+        unzip -o packer_1.7.4_linux_amd64.zip
+        sudo rm -rf /usr/local/bin/packer   # Remove old packer directory
+        sudo mv packer /usr/local/bin/     # Move the new packer binary
+        packer --version
+
+    - name: Build Image
+      run: packer build.pkr.hcl
