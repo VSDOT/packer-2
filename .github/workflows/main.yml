@@ -23,5 +23,5 @@ jobs:
 
     - name: Build Image
       run: |
-        packer init.pkr.hcl
-        packer init.pkr.hcl
+        packer build init.pkr.hcl
+        
