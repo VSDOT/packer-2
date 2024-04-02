@@ -22,4 +22,6 @@ jobs:
         packer --version
 
     - name: Build Image
-      run: packer build.pkr.hcl
+      run: |
+        packer init.pkr.hcl
+        packer init.pkr.hcl
